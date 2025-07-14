@@ -1,3 +1,13 @@
+import { TalentProfiles } from "@/data/talent-profile";
+import { TTalentProfiles } from "@/types/Talent-profile";
+import ProfileGrid from "./(profile)/ProfileGrid";
+
 export default function Home() {
-  return <h1>Talent match maker</h1>;
+  const profiles: TTalentProfiles = TalentProfiles;
+  return (
+    <>
+      <h1 className="md:text-2xl text-3xl">Talent match maker</h1>
+      <ProfileGrid profiles={profiles} />
+    </>
+  );
 }
