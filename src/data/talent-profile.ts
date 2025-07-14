@@ -1,4 +1,4 @@
-[
+export const TalentProfiles = [
   {
     "id": "tal_001",
     "name": "Tyler Baker",
