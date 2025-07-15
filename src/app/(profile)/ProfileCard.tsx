@@ -10,17 +10,27 @@ import {
 import { TTalentProfile } from "@/types/Talent-profile";
 
 export default function ProfileCard(
-  props: Readonly<{ profile: TTalentProfile }>
+  props: Readonly<{
+    profile: TTalentProfile;
+    setSelectedCategory: (category: string) => void;
+  }>
 ) {
   const profile = props.profile;
+  const setSelectedCategory = props.setSelectedCategory;
   return (
     <Card key={profile.id}>
       <CardHeader>
         <CardTitle className="text-xl">{profile.name}</CardTitle>
         <CardDescription className="flex gap-1">
           {profile.categories.map((category) => (
-            <Badge asChild key={category} className="rounded-full">
-              <Button>{category}</Button>
+            <Badge
+              asChild
+              key={category}
+              className="rounded-full cursor-pointer"
+            >
+              <Button onClick={() => setSelectedCategory(category)}>
+                {category}
+              </Button>
             </Badge>
           ))}
         </CardDescription>
