@@ -7072,3 +7072,24 @@ export const TalentProfiles = [
     ]
   }
 ]
+
+// Extract unique locations (city and hometown) from all profiles
+export const TalentLocations = Array.from(
+  new Set(
+    TalentProfiles.flatMap(profile => [profile.city, profile.hometown])
+  )
+);
+
+// Extract unique skills from all profiles
+export const TalentSkills = Array.from(
+  new Set(
+    TalentProfiles.flatMap(profile => profile.skills)
+  )
+);
+
+// Extract unique platforms from all profiles
+export const TalentPlatforms = Array.from(
+  new Set(
+    TalentProfiles.flatMap(profile => profile.platforms)
+  )
+);
