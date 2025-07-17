@@ -6,6 +6,13 @@ import {
 } from "@/data/talent-profile";
 import { TTalentProfiles } from "@/types/Talent-profile";
 import ProfileGrid from "./(profile)/ProfileGrid";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Home() {
   const profiles: TTalentProfiles = TalentProfiles;
@@ -17,11 +24,23 @@ export default function Home() {
           <section className="rounded-2xl border p-4">
             <section>
               <h2 className="py-2 text-xl">Location:</h2>
-              <select>
+              {/* <select>
                 {TalentLocations.map((location) => (
                   <option key={location}>{location}</option>
                 ))}
-              </select>
+              </select> */}
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select Location" />
+                </SelectTrigger>
+                <SelectContent>
+                  {TalentLocations.map((location) => (
+                    <SelectItem key={location} value={location}>
+                      {location}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </section>
             <section>
               <h2 className="py-2 text-xl">Skills:</h2>
