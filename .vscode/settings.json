@@ -1,5 +1,4 @@
 {
-  "cSpell.words": [
-    "turbopack"
-  ]
+  "cSpell.words": ["turbopack"],
+  "oxc.enable": true
 }
