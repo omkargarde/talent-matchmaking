@@ -11,9 +11,7 @@ export default function ProfileGrid(
     setSelectedCategory: (category: string | null) => void;
   }>,
 ) {
-  const profiles = props.profiles;
-  const selectedCategory = props.selectedCategory;
-  const setSelectedCategory = props.setSelectedCategory;
+  const { profiles, selectedCategory, setSelectedCategory } = props;
   return (
     <>
       <section

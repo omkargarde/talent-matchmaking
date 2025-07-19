@@ -15,8 +15,7 @@ export default function ProfileCard(
     setSelectedCategory: (category: string) => void;
   }>
 ) {
-  const profile = props.profile;
-  const setSelectedCategory = props.setSelectedCategory;
+  const { profile, setSelectedCategory } = props;
   return (
     <Card key={profile.id}>
       <CardHeader>
