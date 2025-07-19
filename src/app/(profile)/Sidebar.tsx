@@ -4,12 +4,11 @@ import {
   SelectItem,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  TalentLocations,
-  TalentPlatforms,
-  TalentSkills,
-} from "@/data/talent-profile";
+import { TalentPlatforms } from "@/data/talent-profile";
 import { SelectTrigger } from "@radix-ui/react-select";
+import LocationDropdown from "./LocationDropdown";
+import SkillsDropdown from "./SkillsDropdown";
+import PlatformDropdown from "./PlatformDropdown";
 
 export default function Sidebar(props: {
   setLocation: (value: string | null) => void;
@@ -20,51 +19,9 @@ export default function Sidebar(props: {
   return (
     <>
       <section className="rounded-2xl border p-4">
-        <section>
-          <h2 className="py-2 text-xl">Location:</h2>
-          <Select onValueChange={(value) => setLocation(value)}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select Location" />
-            </SelectTrigger>
-            <SelectContent>
-              {TalentLocations.map((location) => (
-                <SelectItem key={location} value={location}>
-                  {location}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </section>
-        <section>
-          <h2 className="py-2 text-xl">Skills:</h2>
-          <Select onValueChange={(skill) => setSkill(skill)}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select Skill" />
-            </SelectTrigger>
-            <SelectContent>
-              {TalentSkills.map((skill) => (
-                <SelectItem key={skill} value={skill}>
-                  {skill}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </section>
-        <section>
-          <h2 className="py-2 text-xl">Platform:</h2>
-          <Select onValueChange={(platform) => setPlatform(platform)}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select Platform" />
-            </SelectTrigger>
-            <SelectContent>
-              {TalentPlatforms.map((Platform) => (
-                <SelectItem key={Platform} value={Platform}>
-                  {Platform}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </section>
+        <LocationDropdown setLocation={setLocation} />
+        <SkillsDropdown setSkill={setSkill} />
+        <PlatformDropdown setPlatform={setPlatform} />
       </section>
     </>
   );
