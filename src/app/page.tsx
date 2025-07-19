@@ -1,19 +1,7 @@
 "use client"
-import {
-  TalentLocations,
-  TalentPlatforms,
-  TalentProfiles,
-  TalentSkills,
-} from "@/data/talent-profile";
+import { TalentProfiles } from "@/data/talent-profile";
 import { TTalentProfiles } from "@/types/Talent-profile";
 import ProfileGrid from "./(profile)/ProfileGrid";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useState } from "react";
 import Sidebar from "./(profile)/Sidebar";
 

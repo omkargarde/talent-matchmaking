@@ -1,11 +1,3 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectValue,
-} from "@/components/ui/select";
-import { TalentPlatforms } from "@/data/talent-profile";
-import { SelectTrigger } from "@radix-ui/react-select";
 import LocationDropdown from "./LocationDropdown";
 import SkillsDropdown from "./SkillsDropdown";
 import PlatformDropdown from "./PlatformDropdown";
