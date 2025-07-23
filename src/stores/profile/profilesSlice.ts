@@ -1,18 +1,42 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { TalentProfiles } from '@/data/talent-profile';
+import { TTalentProfiles } from '@/types/Talent-profile';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-
-// Create an initial state value for the reducer, with that type
-const initialState = [
-  { id: '1', title: 'First Post!', content: 'Hello!' },
-  { id: '2', title: 'Second Post', content: 'More text' }
-]
+interface IInitialState {
+  profilesData: TTalentProfiles
+  selectedCategory: string | null,
+  location: string | null,
+  skill: string | null,
+  platform: string | null
+}
+const initialState: IInitialState = {
+  profilesData: TalentProfiles,
+  selectedCategory: null,
+  location: null,
+  skill: null,
+  platform: null
+}
 
 // Create the slice and pass in the initial state
 const profilesSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-
+    setSelectedCategory(state, action: PayloadAction<string | null>) {
+      state.selectedCategory = action.payload;
+    },
+    setLocation(state, action: PayloadAction<string | null>) {
+      state.location = action.payload;
+    },
+    setSkill(state, action: PayloadAction<string | null>) {
+      state.skill = action.payload;
+    },
+    setPlatform(state, action: PayloadAction<string | null>) {
+      state.platform = action.payload;
+    },
+    resetFilters(state) {
+      Object.assign(state, initialState);
+    },
   }
 })
 
