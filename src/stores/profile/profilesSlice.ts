@@ -19,7 +19,7 @@ const initialState: IInitialState = {
 
 // Create the slice and pass in the initial state
 const profilesSlice = createSlice({
-  name: 'posts',
+  name: 'profiles',
   initialState,
   reducers: {
     setSelectedCategory(state, action: PayloadAction<string | null>) {
@@ -35,7 +35,10 @@ const profilesSlice = createSlice({
       state.platform = action.payload;
     },
     resetFilters(state) {
-      Object.assign(state, initialState);
+      state.selectedCategory = null;
+      state.location = null;
+      state.skill = null;
+      state.platform = null
     },
   }
 })
