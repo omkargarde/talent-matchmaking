@@ -1,6 +1,6 @@
-import LocationDropdown from "./LocationDropdown";
 import SkillsDropdown from "./SkillsDropdown";
 import PlatformDropdown from "./PlatformDropdown";
+import LocationDropdown from "./LocationDropdown";
 
 export default function Sidebar(props: {
   setLocation: (value: string | null) => void;

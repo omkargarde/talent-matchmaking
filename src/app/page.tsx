@@ -1,9 +1,9 @@
 "use client"
 import { TalentProfiles } from "@/data/talent-profile";
 import { TTalentProfiles } from "@/types/Talent-profile";
-import ProfileGrid from "./(profile)/ProfileGrid";
 import { useState } from "react";
-import Sidebar from "./(profile)/Sidebar";
+import Sidebar from "../components/custom/Sidebar";
+import ProfileGrid from "@/components/custom/ProfileGrid";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
