@@ -1,9 +1,9 @@
-"use client"
-import { TalentProfiles } from "@/data/talent-profile";
-import { TTalentProfiles } from "@/types/Talent-profile";
+"use client";
 import { useState } from "react";
 import Sidebar from "../components/custom/Sidebar";
 import ProfileGrid from "@/components/custom/ProfileGrid";
+import { useAppSelector } from "@/stores/useAppDispatch";
+import { getProfiles } from "@/stores/profile/profilesSlice";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -11,14 +11,14 @@ export default function Home() {
   const [skill, setSkill] = useState<string | null>(null);
   const [platform, setPlatform] = useState<string | null>(null);
 
-  const profiles: TTalentProfiles = TalentProfiles;
+  const profiles = useAppSelector(getProfiles);
 
   const filteredProfiles = profiles.filter((profile) => {
     const matchesCategory =
       selectedCategory === null ||
       profile.categories.includes(selectedCategory);
 
-    const matchesLocation = location === null || profile.city === location ;
+    const matchesLocation = location === null || profile.city === location;
 
     const matchesSkill = skill === null || profile.skills.includes(skill);
 

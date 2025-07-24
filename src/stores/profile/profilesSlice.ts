@@ -1,25 +1,25 @@
-import { TalentProfiles } from '@/data/talent-profile';
-import { TTalentProfiles } from '@/types/Talent-profile';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { TalentProfiles } from "@/data/talent-profile";
+import { TTalentProfiles } from "@/types/Talent-profile";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IInitialState {
-  profilesData: TTalentProfiles
-  selectedCategory: string | null,
-  location: string | null,
-  skill: string | null,
-  platform: string | null
+  profilesData: TTalentProfiles;
+  selectedCategory: string | null;
+  location: string | null;
+  skill: string | null;
+  platform: string | null;
 }
 const initialState: IInitialState = {
   profilesData: TalentProfiles,
   selectedCategory: null,
   location: null,
   skill: null,
-  platform: null
-}
+  platform: null,
+};
 
 // Create the slice and pass in the initial state
 const profilesSlice = createSlice({
-  name: 'profiles',
+  name: "profiles",
   initialState,
   reducers: {
     setSelectedCategory(state, action: PayloadAction<string | null>) {
@@ -38,10 +38,17 @@ const profilesSlice = createSlice({
       state.selectedCategory = null;
       state.location = null;
       state.skill = null;
-      state.platform = null
+      state.platform = null;
     },
-  }
-})
+  },
+  selectors: {
+    getProfiles(state) {
+      return state.profilesData;
+    },
+  },
+});
 
 // Export the generated reducer function
-export default profilesSlice.reducer
+export default profilesSlice.reducer;
+export const { getProfiles } = profilesSlice.selec;
+tors;
