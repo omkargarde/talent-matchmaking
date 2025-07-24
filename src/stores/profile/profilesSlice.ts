@@ -50,5 +50,4 @@ const profilesSlice = createSlice({
 
 // Export the generated reducer function
 export default profilesSlice.reducer;
-export const { getProfiles } = profilesSlice.selec;
-tors;
+export const { getProfiles } = profilesSlice.selectors;
