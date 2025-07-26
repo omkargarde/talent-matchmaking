@@ -84,6 +84,11 @@ const profilesSlice = createSlice({
         new Set(state.profilesData.flatMap((profile) => profile.skills)),
       );
     },
+    getProfilePlatform(state) {
+      return Array.from(
+        new Set(state.profilesData.flatMap((profile) => profile.platforms)),
+      );
+    },
   },
 });
 
@@ -100,4 +105,5 @@ export const {
   getFilteredProfiles,
   getProfileLocations,
   getProfileSkills,
+  getProfilePlatfom,
 } = profilesSlice.selectors;

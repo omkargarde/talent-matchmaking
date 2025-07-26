@@ -9,8 +9,8 @@ import { useAppDispatch, useAppSelector } from "@/stores/useAppDispatch";
 import { getProfileSkills, setSkill } from "@/stores/profile/profilesSlice";
 
 export default function SkillsDropdown() {
-  const TalentSkills = useAppSelector(getProfileSkills);
   const dispatch = useAppDispatch();
+  const TalentSkills = useAppSelector(getProfileSkills);
 
   function handleValueChange(skill: string) {
     dispatch(setSkill(skill));

@@ -5,15 +5,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TalentPlatforms } from "@/data/talent-profile";
-export default function PlatformDropdown(props: {
-  setPlatform: (platform: string | null) => void;
-}) {
-  const { setPlatform } = props;
+import {
+  getProfilePlatform,
+  setPlatform,
+} from "@/stores/profile/profilesSlice";
+import { useAppDispatch, useAppSelector } from "@/stores/useAppDispatch";
+
+export default function PlatformDropdown() {
+  const dispatch = useAppDispatch();
+  const TalentPlatforms = useAppSelector(getProfilePlatform);
+
+  function handleValueChange(platform: string) {
+    dispatch(setPlatform(platform));
+  }
+
   return (
     <section>
       <h2 className="py-2 text-xl">Platform:</h2>
-      <Select onValueChange={(platform) => setPlatform(platform)}>
+      <Select onValueChange={(platform) => handleValueChange(platform)}>
         <SelectTrigger>
           <SelectValue placeholder="Select Platform" />
         </SelectTrigger>
