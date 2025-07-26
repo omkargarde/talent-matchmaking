@@ -105,5 +105,5 @@ export const {
   getFilteredProfiles,
   getProfileLocations,
   getProfileSkills,
-  getProfilePlatfom,
+  getProfilePlatform,
 } = profilesSlice.selectors;
