@@ -11,9 +11,9 @@ export default function Sidebar(props: {
   return (
     <>
       <section className="rounded-2xl border p-4">
-        <LocationDropdown setLocation={setLocation} />
-        <SkillsDropdown setSkill={setSkill} />
-        <PlatformDropdown setPlatform={setPlatform} />
+        <LocationDropdown />
+        <SkillsDropdown />
+        <PlatformDropdown />
       </section>
     </>
   );

@@ -3,7 +3,10 @@ import { useState } from "react";
 import Sidebar from "../components/custom/Sidebar";
 import ProfileGrid from "@/components/custom/ProfileGrid";
 import { useAppSelector } from "@/stores/useAppDispatch";
-import { getProfiles } from "@/stores/profile/profilesSlice";
+import {
+  getFilteredProfiles,
+  getProfiles,
+} from "@/stores/profile/profilesSlice";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -13,22 +16,8 @@ export default function Home() {
 
   const profiles = useAppSelector(getProfiles);
 
-  const filteredProfiles = profiles.filter((profile) => {
-    const matchesCategory =
-      selectedCategory === null ||
-      profile.categories.includes(selectedCategory);
+  const filteredProfiles = useAppSelector(getFilteredProfiles);
 
-    const matchesLocation = location === null || profile.city === location;
-
-    const matchesSkill = skill === null || profile.skills.includes(skill);
-
-    const matchesPlatform =
-      platform === null || profile.platforms.includes(platform);
-
-    return (
-      matchesCategory && matchesLocation && matchesSkill && matchesPlatform
-    );
-  });
   return (
     <>
       <h1 className="text-3xl md:text-2xl">Talent match maker</h1>
