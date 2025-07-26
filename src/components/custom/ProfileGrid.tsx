@@ -1,17 +1,16 @@
-import { TTalentProfiles } from "@/types/Talent-profile";
+"use client";
 import ProfileCard from "./ProfileCard";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  getFilteredProfiles,
+  setSelectedCategory,
+} from "@/stores/profile/profilesSlice";
+import { useSelector } from "react-redux";
 
-export default function ProfileGrid(
-  props: Readonly<{
-    profiles: TTalentProfiles;
-    selectedCategory: string | null;
-    setSelectedCategory: (category: string | null) => void;
-  }>,
-) {
-  const { profiles, selectedCategory, setSelectedCategory } = props;
+export default function ProfileGrid() {
+  const profiles = useSelector(getFilteredProfiles);
   return (
     <>
       <section
