@@ -5,15 +5,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TalentSkills } from "@/data/talent-profile";
-export default function SkillsDropdown(props: {
-  setSkill: (skill: string | null) => void;
-}) {
-  const { setSkill } = props;
+import { useAppDispatch, useAppSelector } from "@/stores/useAppDispatch";
+import { getProfileSkills, setSkill } from "@/stores/profile/profilesSlice";
+
+export default function SkillsDropdown() {
+  const TalentSkills = useAppSelector(getProfileSkills);
+  const dispatch = useAppDispatch();
+
+  function handleValueChange(skill: string) {
+    dispatch(setSkill(skill));
+  }
+
   return (
     <section>
       <h2 className="py-2 text-xl">Skills:</h2>
-      <Select onValueChange={(skill) => setSkill(skill)}>
+      <Select onValueChange={(skill) => handleValueChange(skill)}>
         <SelectTrigger>
           <SelectValue placeholder="Select Skill" />
         </SelectTrigger>
