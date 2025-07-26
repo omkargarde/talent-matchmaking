@@ -93,11 +93,11 @@ export const {
   setLocation,
   setPlatform,
   setSkill,
-  resetFiltes,
+  resetFilters,
 } = profilesSlice.actions;
 export const {
   getProfiles,
   getFilteredProfiles,
   getProfileLocations,
   getProfileSkills,
-} = proilesSlice.selectors;
+} = profilesSlice.selectors;
