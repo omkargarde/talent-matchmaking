@@ -70,6 +70,15 @@ const profilesSlice = createSlice({
         );
       });
     },
+    getProfileLocations(state) {
+      return Array.from(
+        new Set(
+          state.profilesData.map((profile) => {
+            return profile.city || profile.hometown;
+          }),
+        ),
+      );
+    },
   },
 });
 
@@ -79,6 +88,7 @@ export const {
   setLocation,
   setPlatform,
   setSkill,
-  resetFilter,
+  resetFiltrs,
 } = profilesSlice.actions;
-export const { getProfiles, getFilteredProfiles } = profilesSlice.selectors;
+export const { getProfiles, getFilteredProfiles, getProfileLocations } =
+  profilesSlice.selectors;

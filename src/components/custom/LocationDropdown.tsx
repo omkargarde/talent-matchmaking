@@ -5,12 +5,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TalentLocations } from "@/data/talent-profile";
-import { useAppDispatch } from "@/stores/useAppDispatch";
-import { setLocation } from "@/stores/profile/profilesSlice";
+import { useAppDispatch, useAppSelector } from "@/stores/useAppDispatch";
+import {
+  getProfileLocations,
+  setLocation,
+} from "@/stores/profile/profilesSlice";
 
 export default function LocationDropdown() {
   const dispatch = useAppDispatch();
+  const TalentLocations = useAppSelector(getProfileLocations);
 
   function handleValueChange(location: string) {
     dispatch(setLocation(location));
