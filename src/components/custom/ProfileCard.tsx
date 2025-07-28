@@ -1,3 +1,4 @@
+"use client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,14 +9,21 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { TTalentProfile } from "@/types/Talent-profile";
+import { setSelectedCategory } from "@/stores/profile/profilesSlice";
+import { useAppDispatch } from "@/stores/useAppDispatch";
 
 export default function ProfileCard(
   props: Readonly<{
     profile: TTalentProfile;
-    setSelectedCategory: (category: string) => void;
-  }>
+  }>,
 ) {
-  const { profile, setSelectedCategory } = props;
+  const { profile } = props;
+  const dispatch = useAppDispatch();
+
+  function unselectCategory(category: string) {
+    dispatch(setSelectedCategory(category));
+  }
+
   return (
     <Card key={profile.id}>
       <CardHeader>
@@ -25,9 +33,9 @@ export default function ProfileCard(
             <Badge
               asChild
               key={category}
-              className="rounded-full cursor-pointer"
+              className="cursor-pointer rounded-full"
             >
-              <Button onClick={() => setSelectedCategory(category)}>
+              <Button onClick={() => unselectCategory(category)}>
                 {category}
               </Button>
             </Badge>

@@ -47,9 +47,6 @@ const profilesSlice = createSlice({
     },
   },
   selectors: {
-    getProfiles(state) {
-      return state.profilesData;
-    },
     getFilteredProfiles(state) {
       return state.profilesData.filter((profile) => {
         const matchesCategory =
@@ -69,6 +66,9 @@ const profilesSlice = createSlice({
           matchesCategory && matchesLocation && matchesSkill && matchesPlatform
         );
       });
+    },
+    getSelectedCategory(state) {
+      return state.selectedCategory;
     },
     getProfileLocations(state) {
       return Array.from(
@@ -101,9 +101,9 @@ export const {
   resetFilters,
 } = profilesSlice.actions;
 export const {
-  getProfiles,
   getFilteredProfiles,
   getProfileLocations,
   getProfileSkills,
   getProfilePlatform,
+  getSelectedCategory,
 } = profilesSlice.selectors;

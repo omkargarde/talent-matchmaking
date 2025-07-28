@@ -5,12 +5,21 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   getFilteredProfiles,
+  getSelectedCategory,
   setSelectedCategory,
 } from "@/stores/profile/profilesSlice";
 import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/stores/useAppDispatch";
 
 export default function ProfileGrid() {
+  const dispatch = useAppDispatch();
   const profiles = useSelector(getFilteredProfiles);
+  const selectedCategory = useSelector(getSelectedCategory);
+
+  function unselectCategory() {
+    dispatch(setSelectedCategory(null));
+  }
+
   return (
     <>
       <section
@@ -22,7 +31,7 @@ export default function ProfileGrid() {
           <>
             <span>showing all the</span>
             <Badge asChild className="cursor-pointer rounded-full">
-              <Button onClick={() => setSelectedCategory(null)}>
+              <Button onClick={unselectCategory}>
                 {selectedCategory}
                 <X />
               </Button>
@@ -32,11 +41,7 @@ export default function ProfileGrid() {
       </section>
       <div className="grid gap-2 md:grid-cols-3">
         {profiles.map((profile) => (
-          <ProfileCard
-            key={profile.id}
-            profile={profile}
-            setSelectedCategory={setSelectedCategory}
-          />
+          <ProfileCard key={profile.id} profile={profile} />
         ))}
       </div>
     </>
