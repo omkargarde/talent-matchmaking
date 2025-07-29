@@ -11,6 +11,7 @@ import {
 import { TTalentProfile } from "@/types/Talent-profile";
 import { setSelectedCategory } from "@/stores/profile/profilesSlice";
 import { useAppDispatch } from "@/stores/useAppDispatch";
+import Link from "next/link";
 
 export default function ProfileCard(
   props: Readonly<{
@@ -62,6 +63,11 @@ export default function ProfileCard(
           <div>
             <strong>Languages:</strong> {profile.languages.join(", ")}
           </div>
+        </div>
+        <div className="flex justify-end text-sm text-gray-700">
+          <Link href={`/profile/${profile.id}`} className="cursor-pointer">
+            <Button variant="default">Profile</Button>
+          </Link>
         </div>
       </CardContent>
     </Card>

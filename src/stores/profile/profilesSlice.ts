@@ -47,6 +47,11 @@ const profilesSlice = createSlice({
     },
   },
   selectors: {
+    getProfileById(state, action: PayloadAction<string>) {
+      return state.profilesData.find(
+        (profile) => profile.id === action.payload,
+      );
+    },
     getFilteredProfiles(state) {
       return state.profilesData.filter((profile) => {
         const matchesCategory =
