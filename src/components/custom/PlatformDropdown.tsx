@@ -7,14 +7,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  getProfilePlatform,
+  getProfilePlatforms,
   setPlatform,
 } from "@/stores/profile/profilesSlice";
 import { useAppDispatch, useAppSelector } from "@/stores/useAppDispatch";
 
 export default function PlatformDropdown() {
   const dispatch = useAppDispatch();
-  const TalentPlatforms = useAppSelector(getProfilePlatform);
+  const TalentPlatforms = useAppSelector(getProfilePlatforms);
 
   function handleValueChange(platform: string) {
     dispatch(setPlatform(platform));

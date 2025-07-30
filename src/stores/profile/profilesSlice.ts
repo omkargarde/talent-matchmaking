@@ -47,11 +47,6 @@ const profilesSlice = createSlice({
     },
   },
   selectors: {
-    getProfileById(state, action: PayloadAction<string>) {
-      return state.profilesData.find(
-        (profile) => profile.id === action.payload,
-      );
-    },
     getFilteredProfiles(state) {
       return state.profilesData.filter((profile) => {
         const matchesCategory =
@@ -89,7 +84,7 @@ const profilesSlice = createSlice({
         new Set(state.profilesData.flatMap((profile) => profile.skills)),
       );
     },
-    getProfilePlatform(state) {
+    getProfilePlatforms(state) {
       return Array.from(
         new Set(state.profilesData.flatMap((profile) => profile.platforms)),
       );
@@ -109,6 +104,10 @@ export const {
   getFilteredProfiles,
   getProfileLocations,
   getProfileSkills,
-  getProfilePlatform,
+  getProfilePlatforms,
   getSelectedCategory,
 } = profilesSlice.selectors;
+
+export const getProfileById =
+  (profileId: string) => (state: { profiles: IInitialState }) =>
+    state.profiles.profilesData.find((profile) => profile.id === profileId);
