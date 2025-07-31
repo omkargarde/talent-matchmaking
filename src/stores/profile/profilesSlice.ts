@@ -1,5 +1,5 @@
 import { TalentProfiles } from "@/data/talent-profile";
-import { TTalentProfiles } from "@/types/Talent-profile";
+import { TTalentProfiles } from "@/types/data.types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type TSelectedCategory = string | null;

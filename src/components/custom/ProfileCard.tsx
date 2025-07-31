@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { TTalentProfile } from "@/types/Talent-profile";
+import { TTalentProfile } from "@/types/data.types";
 import { setSelectedCategory } from "@/stores/profile/profilesSlice";
 import { useAppDispatch } from "@/stores/useAppDispatch";
 import Link from "next/link";

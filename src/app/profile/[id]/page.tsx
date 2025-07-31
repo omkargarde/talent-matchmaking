@@ -1,6 +1,6 @@
 import ProfileDetails from "@/components/custom/profileDetails";
 
-export default async function Page({
+export default async function ProfileDetailsPage({
   params,
 }: {
   params: Promise<{ id: string }>;
