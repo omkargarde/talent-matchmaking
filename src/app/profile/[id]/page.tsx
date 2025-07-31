@@ -1,4 +1,4 @@
-import ProfileDetails from "@/components/custom/profileDetails";
+import ProfileDetails from "@/components/custom/profile/profileDetails";
 
 export default async function ProfileDetailsPage({
   params,

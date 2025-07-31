@@ -10,10 +10,10 @@ import {
   getProfilePlatforms,
   setPlatform,
 } from "@/stores/profile/profilesSlice";
-import { useAppDispatch, useAppSelector } from "@/stores/useAppDispatch";
+import { store, useAppSelector } from "@/stores/store";
 
 export default function PlatformDropdown() {
-  const dispatch = useAppDispatch();
+  const dispatch = store();
   const TalentPlatforms = useAppSelector(getProfilePlatforms);
 
   function handleValueChange(platform: string) {

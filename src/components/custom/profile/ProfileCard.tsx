@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { TTalentProfile } from "@/types/data.types";
 import { setSelectedCategory } from "@/stores/profile/profilesSlice";
-import { useAppDispatch } from "@/stores/useAppDispatch";
+import { store } from "@/stores/store";
 import Link from "next/link";
 
 export default function ProfileCard(
@@ -19,7 +19,7 @@ export default function ProfileCard(
   }>,
 ) {
   const { profile } = props;
-  const dispatch = useAppDispatch();
+  const dispatch = store();
 
   function unselectCategory(category: string) {
     dispatch(setSelectedCategory(category));

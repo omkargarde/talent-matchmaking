@@ -1,6 +1,6 @@
-import Sidebar from "../components/custom/Sidebar";
-import ProfileGrid from "@/components/custom/ProfileGrid";
-import ActiveJobFilters from "@/components/custom/ActiveJobFilters";
+import Sidebar from "../components/custom/profile/Sidebar";
+import ProfileGrid from "@/components/custom/profile/ProfileGrid";
+import ActiveJobFilters from "@/components/custom/profile/ActiveJobFilters";
 
 export default function Home() {
   return (

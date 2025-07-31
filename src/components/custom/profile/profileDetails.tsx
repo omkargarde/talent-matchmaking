@@ -1,5 +1,5 @@
 "use client";
-import { useAppSelector } from "@/stores/useAppDispatch";
+import { useAppSelector } from "@/stores/store";
 import { getProfileById } from "@/stores/profile/profilesSlice";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";

@@ -1,16 +1,16 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { useSelector } from "react-redux";
 import {
   getSelectedCategory,
   setSelectedCategory,
 } from "@/stores/profile/profilesSlice";
-import { useAppDispatch } from "@/stores/useAppDispatch";
+import { store } from "@/stores/store";
 import { X } from "lucide-react";
 
 export default function ActiveJobFilters() {
-  const dispatch = useAppDispatch();
+  const dispatch = store();
   const selectedCategory = useSelector(getSelectedCategory);
 
   function unselectCategory() {

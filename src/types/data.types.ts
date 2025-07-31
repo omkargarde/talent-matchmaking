@@ -1,9 +1,9 @@
 import { TalentProfiles } from "@/data/talent-profile";
-import { gigsDataset } from "@/data/gigs-dataset";
+import { GigsDataset } from "@/data/gigs-dataset";
 
 // profile
 export type TTalentProfiles = typeof TalentProfiles;
 export type TTalentProfile = (typeof TalentProfiles)[number];
 // gigs
-export type TGigsDatasets = typeof gigsDataset;
-export type TGigsDataset = (typeof gigsDataset)[number];
+export type TGigsDatasets = typeof GigsDataset;
+export type TGigsDataset = (typeof GigsDataset)[number];
