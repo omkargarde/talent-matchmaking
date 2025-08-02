@@ -20,6 +20,10 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import getUrgencyColor from "@/functions/getUrgencyColor";
+import getStatusColor from "@/functions/getStatusColor";
+import formatDate from "@/functions/formatDate";
+import formatCurrency from "@/functions/formatCurrency";
 
 export default function GigsGrid() {
   const gigs = useAppSelector(getGigs);
@@ -34,56 +38,17 @@ export default function GigsGrid() {
     const matchesSearch =
       gig.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       gig.brief_text.toLowerCase().includes(searchTerm.toLowerCase());
+
     const matchesCategory =
       selectedCategory === "all" || gig.category === selectedCategory;
+
     const matchesCity = selectedCity === "all" || gig.city === selectedCity;
+
     const matchesStatus =
       selectedStatus === "all" || gig.status === selectedStatus;
 
     return matchesSearch && matchesCategory && matchesCity && matchesStatus;
   });
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "confirmed":
-        return "bg-green-100 text-green-800 hover:bg-green-200";
-      case "open":
-        return "bg-blue-100 text-blue-800 hover:bg-blue-200";
-      case "in_progress":
-        return "bg-yellow-100 text-yellow-800 hover:bg-yellow-200";
-      default:
-        return "bg-gray-100 text-gray-800 hover:bg-gray-200";
-    }
-  };
-
-  const getUrgencyColor = (urgency: string) => {
-    switch (urgency) {
-      case "ASAP":
-        return "bg-red-100 text-red-800 hover:bg-red-200";
-      case "Medium":
-        return "bg-orange-100 text-orange-800 hover:bg-orange-200";
-      case "Low":
-        return "bg-gray-100 text-gray-800 hover:bg-gray-200";
-      default:
-        return "bg-gray-100 text-gray-800 hover:bg-gray-200";
-    }
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-IN", {
-      style: "currency",
-      currency: "INR",
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
-
-  const formatDate = (dateString: string | number | Date) => {
-    return new Date(dateString).toLocaleDateString("en-IN", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -187,7 +152,7 @@ export default function GigsGrid() {
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center text-gray-700">
                     <span className="font-semibold text-green-600">
-                      {formatCurrency(+gig.budget)}
+                      {formatCurrency(Number(gig.budget))}
                     </span>
                   </div>
                   <div className="flex items-center text-sm text-gray-500">
