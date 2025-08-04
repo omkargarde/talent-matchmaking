@@ -7,11 +7,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { store, useAppSelector } from "@/stores/store";
+import { useAppDispatch, useAppSelector } from "@/stores/store";
 import { getProfileSkills, setSkill } from "@/stores/profile/profilesSlice";
 
 export default function SkillsDropdown() {
-  const dispatch = store();
+  const dispatch = useAppDispatch();
   const TalentSkills = useAppSelector(getProfileSkills);
 
   function handleValueChange(skill: string) {

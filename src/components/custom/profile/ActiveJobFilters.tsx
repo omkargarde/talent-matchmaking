@@ -6,11 +6,11 @@ import {
   getSelectedCategory,
   setSelectedCategory,
 } from "@/stores/profile/profilesSlice";
-import { store } from "@/stores/store";
+import { useAppDispatch } from "@/stores/store";
 import { X } from "lucide-react";
 
 export default function ActiveJobFilters() {
-  const dispatch = store();
+  const dispatch = useAppDispatch();
   const selectedCategory = useSelector(getSelectedCategory);
 
   function unselectCategory() {
