@@ -1,7 +1,6 @@
 "use client";
 import { useAppSelector } from "@/stores/store";
 import { getGigs } from "@/stores/gigs/gigsSlice";
-import { useState } from "react";
 import { Calendar, Eye, MapPin, Search, Star } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
@@ -24,6 +23,7 @@ import getUrgencyColor from "@/functions/getUrgencyColor";
 import getStatusColor from "@/functions/getStatusColor";
 import formatDate from "@/functions/formatDate";
 import formatCurrency from "@/functions/formatCurrency";
+import { useState } from "react";
 
 export default function GigsGrid() {
   const gigs = useAppSelector(getGigs);
@@ -72,14 +72,18 @@ export default function GigsGrid() {
                 <Input
                   placeholder="Search gigs..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                  }}
                   className="pl-10"
                 />
               </div>
             </div>
             <Select
               value={selectedCategory}
-              onValueChange={setSelectedCategory}
+              onValueChange={(selectedCategory) => {
+                setSelectedCategory(selectedCategory);
+              }}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Category" />
@@ -91,7 +95,12 @@ export default function GigsGrid() {
                 <SelectItem value="Writing">Writing</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={selectedCity} onValueChange={setSelectedCity}>
+            <Select
+              value={selectedCity}
+              onValueChange={(selectedCity) => {
+                setSelectedCity(selectedCity);
+              }}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="City" />
               </SelectTrigger>
@@ -102,7 +111,12 @@ export default function GigsGrid() {
                 <SelectItem value="Delhi">Delhi</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+            <Select
+              value={selectedStatus}
+              onValueChange={(selectedStatus) => {
+                setSelectedStatus(selectedStatus);
+              }}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
