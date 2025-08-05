@@ -12,7 +12,23 @@ const initialState = {
 const gigsSlice = createSlice({
   name: "gigs",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+    },
+
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
+
+    setSelectedCity: (state, action) => {
+      state.selectedCity = action.payload;
+    },
+
+    setSelectedState: (state, action) => {
+      state.selectedState = action.payload;
+    },
+  },
   selectors: {
     getGigs(state) {
       return state.gigsDatasets;
@@ -21,5 +37,10 @@ const gigsSlice = createSlice({
 });
 
 export default gigsSlice.reducer;
-export const {} = gigsSlice.actions;
+export const {
+  setSearchTerm,
+  setSelectedCategory,
+  setSelectedState,
+  setSelectedCity,
+} = gigsSlice.actions;
 export const { getGigs } = gigsSlice.selectors;

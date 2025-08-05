@@ -6,13 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "db:gen": "npx drizzle-kit generate",
-    "db:mig": "npx drizzle-kit migrate",
-    "db:seed": "npx tsx src/db/index.ts"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@libsql/client": "^0.15.10",
     "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
@@ -20,8 +16,6 @@
     "babel-plugin-react-compiler": "^19.1.0-rc.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "dotenv": "^17.2.1",
-    "drizzle-orm": "^0.44.4",
     "lucide-react": "^0.525.0",
     "next": "^15.4.2",
     "react": "19.1.0",
@@ -35,7 +29,6 @@
     "@types/node": "^20.19.8",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
-    "drizzle-kit": "^0.31.4",
     "eslint": "^9.31.0",
     "eslint-config-next": "15.4.1",
     "prettier": "^3.6.2",
