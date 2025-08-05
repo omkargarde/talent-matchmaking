@@ -1,4 +1,5 @@
 // Main talents table
+import { relations } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const talents = sqliteTable("talents", {
@@ -176,3 +177,56 @@ export const availabilityCalendar = sqliteTable("availability_calendar", {
   fromDate: text("from_date").notNull(), // YYYY-MM-DD format
   toDate: text("to_date").notNull(), // YYYY-MM-DD format
 });
+
+export const portfolioItems = sqliteTable("portfolio_items", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  talentId: text("talent_id")
+    .notNull()
+    .references(() => talents.id, { onDelete: "cascade" }),
+  title: text("title").notNull(),
+});
+
+export const portfolioTags = sqliteTable("portfolio_tags", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name").notNull().unique(),
+});
+
+export const portfolioItemTags = sqliteTable("portfolio_item_tags", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  portfolioItemId: integer("portfolio_item_id")
+    .notNull()
+    .references(() => portfolioItems.id, { onDelete: "cascade" }),
+  portfolioTagId: integer("portfolio_tag_id")
+    .notNull()
+    .references(() => portfolioTags.id, { onDelete: "cascade" }),
+});
+
+export const portfolioKeywords = sqliteTable("portfolio_keywords", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name").notNull().unique(),
+});
+
+export const portfolioItemKeywords = sqliteTable("portfolio_item_keywords", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  portfolioItemId: integer("portfolio_item_id")
+    .notNull()
+    .references(() => portfolioItems.id, { onDelete: "cascade" }),
+  portfolioKeywordId: integer("portfolio_keyword_id")
+    .notNull()
+    .references(() => portfolioKeywords.id, { onDelete: "cascade" }),
+});
+
+export const talentsRelations = relations(talents, ({ many }) => ({
+  categories: many(tupdalentCategories),
+  skills: many(talentSkills),
+  styleTags: many(talentStyleTags),
+  platforms: many(talentPlatforms),
+  softwareSkills: many(talentSoftwareSkills),
+  languages: many(talentLanguages),
+  pastCredits: many(pastCompanies),
+  endorsements: many(endorsements),
+  interestTags: many(talentInterestTags),
+  tierTags: many(talentTierTags),
+  availabilityCalendar: many(availabilityCalendar),
+  portfolioItems: many(portfolioItems),
+}));
