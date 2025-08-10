@@ -1,4 +1,8 @@
 {
   "cSpell.words": ["Boho", "Kolkata", "turbopack"],
-  "oxc.enable": true
+  "oxc.enable": true,
+  "sonarlint.connectedMode.project": {
+    "connectionId": "omkar garde",
+    "projectKey": "omkargarde_angularAdminUI"
+  }
 }
